@@ -110,6 +110,18 @@ There are only 3 props here.
   - default: `{}`
   - description: Customize modal-inner classname for UI purpose(eg: changing bg img...)
 
+**wrapperTransition**
+
+  - type: `String`
+  - default: fade
+  - description: transition name to set outside wrapper
+
+**innerTransition**
+
+  - type: `String`
+  - default: `''`
+  - description: transition name to set outside inner
+
 
 ### Use in components
 

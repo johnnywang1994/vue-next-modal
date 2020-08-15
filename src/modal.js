@@ -4,8 +4,8 @@ import Modal from './Modal.vue';
 const hasSymbol = typeof Symbol === 'function' && typeof Symbol.toStringTag === 'symbol';
 const PolySymbol = (name) => 
   hasSymbol
-    ? Symbol( '[vue-modal]: ' + name )
-    : ( '[vue-modal]: ' ) + name;
+    ? Symbol( '[vue-next-modal]: ' + name )
+    : ( '[vue-next-modal]: ' ) + name;
 
 const modalKey = PolySymbol('modal');
 

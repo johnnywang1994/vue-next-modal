@@ -1,16 +1,20 @@
 <template>
-  <div
-    class="modal-wrapper"
-    v-show="showModal"
-    @click.self="onWrapperClicked"
-  >
-    <div class="loading" v-if="showModal && loading">
-      <slot name="loading"></slot>
+  <transition :name="wrapperTransition">
+    <div
+      class="modal-wrapper"
+      v-show="showModal"
+      @click.self="onWrapperClicked"
+    >
+      <div class="loading" v-if="showModal && loading">
+        <slot name="loading"></slot>
+      </div>
+      <transition :name="innerTransition">
+        <div :class="['modal-inner', modalClass]" v-show="showModal && !loading">
+          <component :is="firstup ? adjustString($modal.name) : $modal.name" />
+        </div>
+      </transition>
     </div>
-    <div :class="['modal-inner', modalClass]" v-show="showModal && !loading">
-      <component :is="firstup ? adjustString(modal.name) : modal.name" />
-    </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -34,6 +38,14 @@ export default {
       type: Object,
       default: () => ({}),
       description: 'Customize modal-inner classname for UI purpose',
+    },
+    wrapperTransition: {
+      type: String,
+      default: 'fade',
+    },
+    innerTransition: {
+      type: String,
+      default: '',
     },
   },
   methods: {
