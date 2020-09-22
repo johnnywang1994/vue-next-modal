@@ -57,7 +57,7 @@ export default {
     const modal = useModal();
     const showModal = computed(() => modal.name.value);
     const adjustString = (str) =>
-      str && str.charAt(0).toUpperCase() + str.slice(1);
+      str.value && str.value.charAt(0).toUpperCase() + str.value.slice(1);
     return { modal, adjustString, showModal };
   },
 };
