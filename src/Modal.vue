@@ -10,7 +10,7 @@
       </div>
       <transition :name="innerTransition">
         <div :class="['modal-inner', modalClass]" v-show="showModal && !loading">
-          <component :is="firstup ? adjustString($modal.name) : $modal.name" />
+          <component :is="firstup ? adjustString(modal.name) : modal.name" />
         </div>
       </transition>
     </div>
