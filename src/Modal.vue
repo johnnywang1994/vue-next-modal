@@ -94,10 +94,6 @@ $modal-width: 5rem;
   }
   > .modal-inner {
     @include alignCenter;
-    font-size: 0.14rem;
-    font-weight: 500;
-    color: #fff;
-    width: $modal-width;
     z-index: 998;
     animation-duration: 0.3s;
   }
