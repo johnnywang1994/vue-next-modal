@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import { ref, computed } from 'vue';
 import { useModal } from './modal';
 
 export default {
@@ -56,7 +55,7 @@ export default {
   },
   setup() {
     const modal = useModal();
-    const showModal = computed(() => modal.name.value);
+    const showModal = modal.name;
     const adjustString = (str) =>
       str.value && str.value.charAt(0).toUpperCase() + str.value.slice(1);
     return { modal, adjustString, showModal };
@@ -80,16 +79,12 @@ export default {
   transform: translate(-50%, -50%);
 }
 
-$modal-width: 5rem;
-
 .modal-wrapper {
   @include fullcover;
   position: fixed;
-  background: rgba(0, 0, 0, 0.75);
   z-index: 997;
   animation-duration: 0.3s;
   > .loading {
-    color: #fff;
     @include alignCenter;
   }
   > .modal-inner {

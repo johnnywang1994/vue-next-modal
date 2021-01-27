@@ -7,7 +7,11 @@ const PolySymbol = (name) =>
     ? Symbol( '[vue-next-modal]: ' + name )
     : ( '[vue-next-modal]: ' ) + name;
 
-const modalKey = PolySymbol('modal');
+const modalKey = PolySymbol('vue-next-modal');
+
+function defineProp(target, key, options) {
+  Object.defineProperty(target, key, options);
+}
 
 function applyModalPlugin(app, modal, options) {
   Modal.components = options.components;
@@ -28,16 +32,18 @@ export function createModal() {
   function close() {
     update(undefined, {});
   }
+  const name = computed(() => currentModal.name || false);
+  const data = computed(() => currentModal.data);
   const modal = {
     currentModal,
-    name: computed(() => currentModal.name ? currentModal.name : false),
-    data: computed(() => currentModal.data),
     update,
     close,
     install(app, options) {
       applyModalPlugin(app, this, options);
     }
   };
+  defineProp(modal, 'name', { get: () => name });
+  defineProp(modal, 'data', { get: () => data });
   return modal;
 }
 
