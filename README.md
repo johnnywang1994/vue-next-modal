@@ -11,12 +11,16 @@ $ npm install vue-next-modal
 $ yarn add vue-next-modal
 ```
 
+Since the modal component is created by sass, please make sure you have `sass` & `sass-loader` installed in your webpack or other bundlers.
+
 
 ## What plugin does?
 
 This plugin will register a global component named `modal`, which would automatically use the plugin features.
 
 Then you can use `useModal` globally to import the modal instance.
+
+If you still need to use option API, you can still access modal by `this.$modal`.
 
 
 ## Usage
@@ -147,7 +151,12 @@ export default {
 
 ### About modal object
 
-There are 2 methods, 2 properties in `modal` object.
+There are 2 methods, 3 properties in `modal` object.
+
+**currentModal**
+
+  - type: `vue-reactive-object`
+  - description: real reactive object, do not modified data here directly, it may cause some unexpected error, this just used for some situation when you can not access data correctly by composition API.
 
 **name**
 
