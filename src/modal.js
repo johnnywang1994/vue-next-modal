@@ -15,7 +15,7 @@ function defineProp(target, key, options) {
 
 function applyModalPlugin(app, modal, options) {
   Modal.components = options.components;
-  app.component('Modal', Modal);
+  app.component(options.globalName || 'Modal', Modal);
   app.config.globalProperties.$modal = modal;
   app.provide(modalKey, modal);
 }
